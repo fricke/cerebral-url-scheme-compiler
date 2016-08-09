@@ -1,6 +1,8 @@
 import input from './input'
 import output from './output'
 import state from './state'
+import module from './module'
+import modules from './modules'
 import parseUrl from './parseUrl'
 
 export default function compile (path, fn, isGetter) {
@@ -14,6 +16,10 @@ export default function compile (path, fn, isGetter) {
         return output(url)
       } else if (url.scheme === 'state') {
         return state(url, fn, isGetter)
+      } else if(url.scheme === 'module') {
+        return module(url, fn, isGetter)
+    } else if(/^modules/.test(url.scheme)) {
+        return modules(url, fn, isGetter)
       } else {
         return console.error(`${path} : not supported by input, output or state.${fn}`)
       }
