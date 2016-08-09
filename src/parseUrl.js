@@ -1,4 +1,4 @@
-const regex = /^(\w+):([\w\.]+)$/
+const regex = /^(.+):([\w\.]+)$/
 
 export default function parseUrl (url) {
   const match = regex.exec(url)
